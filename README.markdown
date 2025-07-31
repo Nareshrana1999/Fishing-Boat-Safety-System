@@ -54,9 +54,7 @@ The system is designed with a modular, layered architecture for reliability and 
                               +--------------------------+
 ```
 
-<p align="center">
-  <img src="./Circuit%20Diagram/Circuit%20Diagram.png" alt="Circuit Diagram" width="900"/>
-</p>
+<img src="./Circuit%20Diagram/Circuit%20Diagram.png" alt="Circuit Diagram" width="900"/>
 
 ---
 
@@ -162,30 +160,20 @@ Connect components to Arduino Uno with exact pin-to-pin wiring:
 
 ## 🖥️ Detailed Circuit Online
 
-<p align="center">
-  <a href="https://app.cirkitdesigner.com/project/29163fd1-7f0c-47da-bc2a-d4b686db9c3b" target="_blank">
-    <img src="https://app.cirkitdesigner.com/favicon.ico" width="40" alt="Cirkit Designer Logo"/>
-  </a>
-</p>
+[![Cirkit Designer Logo](https://app.cirkitdesigner.com/favicon.ico)](https://app.cirkitdesigner.com/project/29163fd1-7f0c-47da-bc2a-d4b686db9c3b)
 
-<p align="center">
-  View the full interactive circuit and all detailed connections on Cirkit Designer:<br>
-  <a href="https://app.cirkitdesigner.com/project/29163fd1-7f0c-47da-bc2a-d4b686db9c3b"><strong>Open Circuit Project</strong></a>
-</p>
+View the full interactive circuit and all detailed connections on Cirkit Designer:
+[Open Circuit Project](https://app.cirkitdesigner.com/project/29163fd1-7f0c-47da-bc2a-d4b686db9c3b)
 
 ---
 
 ## 📜 License
 
-<div align="center">
-  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License" style="vertical-align:middle; margin-right:10px;"/>
-</div>
+<img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License" style="vertical-align:middle; margin-right:10px;"/>
 
-<p align="center" style="font-size:1.1em;">
-  <strong>This project is licensed under the <a href="LICENSE">MIT License</a>.</strong><br>
-  You are free to use, modify, and distribute this software with proper attribution.<br>
-  See the <a href="LICENSE">LICENSE</a> file for full details.
-</p>
+**This project is licensed under the [MIT License](LICENSE).**
+You are free to use, modify, and distribute this software with proper attribution.
+See the [LICENSE](LICENSE) file for full details.
 
 ---
 
