@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Fishing Boat Safety System** is an open-source Arduino-based project developed by [Nareshrana1999](https://github.com/Nareshrana1999) to enhance the safety of fishermen at sea. Hosted at [https://github.com/Nareshrana1999/Fishing-Boat-Safety-System](https://github.com/Nareshrana1999/Fishing-Boat-Safety-System), this project provides real-time location tracking, accident detection, and emergency alerts using a single SIM800L GSM module, a Neo-6M GPS module, and an MPU6050 accelerometer. The system monitors boat tilt, GPS coordinates, battery voltage, and manual triggers, displaying status on a 16x2 LCD and sounding a buzzer during emergencies. This project offers a cost-effective and easy-to-install solution for coastal fishing communities.
+The **Fishing Boat Safety System** is an open-source Arduino-based project designed to enhance the safety of fishermen at sea. This project provides real-time location tracking, accident detection, and emergency alerts using a single SIM800L GSM module, a Neo-6M GPS module, and an MPU6050 accelerometer. The system monitors boat tilt, GPS coordinates, battery voltage, and manual triggers, displaying status on a 16x2 LCD and sounding a buzzer during emergencies. This project offers a cost-effective and easy-to-install solution for coastal fishing communities.
 
 ### Key Features
 - Real-time GPS tracking with the Neo-6M module.
@@ -58,26 +58,43 @@ The **Fishing Boat Safety System** is an open-source Arduino-based project devel
   - Installation: Use `Sketch > Include Library > Manage Libraries` in Arduino IDE.
 
 ### System Architecture
-The system collects data from sensors, processes it with Arduino Uno, and outputs alerts via LCD, buzzer, and a single GSM module. The architecture includes:
-- **Inputs**: MPU6050 (tilt via I2C: A4, A5), Neo-6M GPS (serial: D4, D3), push button (D7), battery voltage (A0).
-- **Processing**: Arduino evaluates data and triggers alerts based on tilt (>30°) or button press.
-- **Outputs**: LCD (I2C: A4, A5), buzzer (D8), GSM (serial: D10, D11).
+
+The Fishing Boat Safety System is built on a modular, robust architecture that ensures real-time monitoring and rapid emergency response. The system is composed of the following layers:
+
+- **Sensor Layer:**
+  - MPU6050 (I2C: A4, A5): Continuously monitors boat tilt and motion.
+  - Neo-6M GPS (Serial: D4, D3): Provides accurate real-time location data.
+  - Push Button (Digital: D7): Allows manual emergency triggering.
+  - Battery Voltage Divider (Analog: A0): Monitors battery health.
+
+- **Processing Layer:**
+  - Arduino Uno: Acts as the central controller, aggregating sensor data, evaluating safety conditions (e.g., tilt >30°, low battery), and managing system logic.
+
+- **Communication & Alert Layer:**
+  - SIM800L GSM Module (Serial: D10, D11): Sends emergency SMS alerts to predefined contacts.
+  - 16x2 LCD (I2C: A4, A5): Displays system status, coordinates, and warnings.
+  - Buzzer (D8): Provides audible alerts during emergencies.
+
+**Data Flow Diagram:**
 
 ```plaintext
-[MPU6050 Sensor]       [Neo-6M GPS]       [Push Button]       [Battery Divider]
-       ↓                    ↓                   ↓                  ↓
-   [Tilt Data]        [Coordinates]       [Manual Trigger]    [Voltage]
-   (I2C: A4, A5)     (Serial: D4, D3)     (Digital: D7)      (Analog: A0)
-       ↓                    ↓                   ↓                  ↓
-       →→→→→→→→→→→→→ [Arduino Uno] ←←←←←←←←←←←←←←←←←←←←←←←←←←
-                 ↓
-     ┌───────────────┬──────────────┐
-     ↓               ↓              ↓
- [16x2 LCD]       [Buzzer]     [SIM800L GSM]
- (I2C: A4, A5)    (D8)         (Serial: D10, D11)
-                                  ↓
-                          [Emergency Contact]
+[Sensors]
+  ├─ MPU6050 (Tilt)
+  ├─ Neo-6M GPS (Location)
+  ├─ Push Button (Manual Trigger)
+  └─ Battery Divider (Voltage)
+        ↓
+[Arduino Uno: Data Processing & Decision Making]
+        ↓
+[Outputs]
+  ├─ 16x2 LCD (Status/Coordinates)
+  ├─ Buzzer (Emergency Alert)
+  └─ SIM800L GSM (SMS Notification)
+        ↓
+[Emergency Contact/Rescue Team]
 ```
+
+This layered architecture ensures that the system is reliable, easy to maintain, and scalable for future enhancements such as additional sensors or communication modules.
 
 ## Installation and Setup
 
@@ -191,15 +208,6 @@ Connect components to Arduino Uno with exact pin-to-pin wiring:
 ## Circuit Diagram
 See the circuit preview for detailed wiring: [https://app.cirkitdesigner.com/project/29163fd1-7f0c-47da-bc2a-d4b686db9c3b](https://app.cirkitdesigner.com/project/29163fd1-7f0c-47da-bc2a-d4b686db9c3b).
 
-## Contributing
-We welcome contributions to improve this project! To contribute:
-1. Fork this repository (`https://github.com/Nareshrana1999/Fishing-Boat-Safety-System`).
-2. Create a branch (`git checkout -b feature/YourFeature`).
-3. Commit changes (`git commit -m "Add YourFeature"`).
-4. Push to the branch (`git push origin feature/YourFeature`).
-5. Open a pull request.
-- Report issues or suggest features via the [Issues](https://github.com/Nareshrana1999/Fishing-Boat-Safety-System/issues) tab.
-- Follow the code style in `FishingBoatSafetySystem.ino`.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
