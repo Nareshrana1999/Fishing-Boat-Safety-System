@@ -7,8 +7,6 @@
 
 ---
 
-> **Empowering safer journeys for fishermen with real-time tracking, accident detection, and instant emergency alerts.**
-
 ---
 
 ## 📝 Overview
