@@ -5,10 +5,6 @@
   <a href="https://www.arduino.cc/"><img src="https://img.shields.io/badge/platform-arduino-blue.svg" alt="Platform: Arduino"></a>
 </p>
 
----
-
----
-
 ## 📝 Overview
 
 The **Fishing Boat Safety System** is an open-source, Arduino-based solution designed to enhance the safety of fishermen at sea. It provides real-time location tracking, accident detection, and emergency alerts using a SIM800L GSM module, Neo-6M GPS, and MPU6050 accelerometer. The system monitors boat tilt, GPS coordinates, battery voltage, and manual triggers, displaying status on a 16x2 LCD and sounding a buzzer during emergencies. This project is cost-effective, easy to install, and ideal for coastal fishing communities.
