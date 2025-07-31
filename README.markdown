@@ -98,37 +98,71 @@ The system is designed with a modular, layered architecture for reliability and 
 
 ---
 
-## ⚡ Installation & Setup
+## ⚡ Installation and Setup
 
-### 1. Gather Hardware
-- Collect all listed components.
-- Ensure SIM800L has an active 2G SIM card.
-- Prepare a buck converter for stable GSM power.
+### Step 1: Gather Hardware
 
-### 2. Install Software
-- Download and install the [Arduino IDE](https://www.arduino.cc/en/software).
-- Install required libraries:
-  - `LiquidCrystal_I2C` (Frank de Brabander)
-  - `TinyGPSPlus` (Mikal Hart)
-  - `MPU6050` (Electronic Cats/Adafruit)
-  - Confirm `Wire.h` and `SoftwareSerial.h` are built-in
+*   Collect all listed components.
+*   Verify the SIM800L has an active 2G SIM card with sufficient balance.
+*   Prepare a buck converter (e.g., adjustable step-down module) to convert 9V to 3.7–4.2V with at least 2A output.
 
-### 3. Wire the Components
-- Follow the circuit diagram above for exact pin connections.
-- Double-check all connections and power levels (especially for SIM800L).
+### Step 2: Install Software
 
-### 4. Upload the Code
-- Clone this repo or download `FishingBoatSafetySystem.ino`.
-- Open in Arduino IDE, update `emergencyNumber` in code.
-- Select board/port and upload.
+1.  Download and install the latest Arduino IDE from [arduino.cc](https://www.arduino.cc/en/software).
+2.  Install required libraries via Sketch > Include Library > Manage Libraries:
+    *   **LiquidCrystal_I2C** (Frank de Brabander).
+    *   **TinyGPSPlus** (Mikal Hart).
+    *   **MPU6050** (Electronic Cats or Adafruit).
+    *   Confirm Wire.h and SoftwareSerial.h are built-in.
+3.  Verify installation by checking the library menu.
 
-### 5. Test the System
-- Power on and verify LCD, buzzer, and GSM operation.
-- Test tilt, button, and battery triggers.
-- Use Serial Monitor for debugging (9600 baud).
+### Step 3: Wire the Components
 
-### 6. Final Assembly
-- Secure components, use waterproof enclosure, and test on dock before deployment.
+Connect components to Arduino Uno with exact pin-to-pin wiring:
+
+1.  **Power Supply**:
+    *   Connect a 9V battery to the Arduino Uno via the barrel jack or battery clip.
+    *   Connect a second 9V battery to the input of the buck converter.
+    *   Adjust the buck converter output to 3.7–4.2V (using a multimeter) and connect its positive output to the SIM800L VCC pin, negative to the SIM800L GND pin.
+2.  **Neo-6M GPS Module**:
+    *   **VCC** → Arduino 5V pin.
+    *   **GND** → Arduino GND pin.
+    *   **TX** → Arduino D4 pin.
+    *   **RX** → Arduino D3 pin.
+    *   Place near an open area for satellite reception.
+3.  **SIM800L GSM Module**:
+    *   **VCC** → Buck converter positive output (3.7–4.2V).
+    *   **GND** → Buck converter negative output (connected to Arduino GND pin).
+    *   **TX** → Arduino D10 pin.
+    *   **RX** → Arduino D11 pin.
+    *   Insert an active 2G SIM card and ensure the buck converter provides stable power.
+4.  **MPU6050 Sensor**:
+    *   **VCC** → Arduino 5V pin.
+    *   **GND** → Arduino GND pin.
+    *   **SCL** → Arduino A5 pin.
+    *   **SDA** → Arduino A4 pin.
+5.  **16x2 LCD with I2C Module**:
+    *   **VCC** → Arduino 5V pin.
+    *   **GND** → Arduino GND pin.
+    *   **SCL** → Arduino A5 pin.
+    *   **SDA** → Arduino A4 pin.
+6.  **Buzzer**:
+    *   **Positive** → Arduino D8 pin.
+    *   **Negative** → Arduino GND pin.
+7.  **Push Button**:
+    *   **Leg 1** → Arduino D7 pin.
+    *   **Leg 2** → Arduino GND pin (uses internal pull-up resistor).
+8.  **Battery Voltage Divider**:
+    *   **Resistor 1 (10kΩ)**: Connect one end to the 9V battery positive, other end to a junction.
+    *   **Resistor 2 (10kΩ)**: Connect one end to the junction, other end to the 9V battery negative.
+    *   **Junction** → Arduino A0 pin.
+    *   **9V Battery Negative** → Arduino GND pin.
+
+#### Wiring Tips
+
+*   Use color-coded wires (red: 5V, black: GND, blue: signals).
+*   Ensure the buck converter is adjusted to 3.7–4.2V with a multimeter before connecting to the SIM800L.
+*   Double-check all connections to avoid shorts.
 
 ---
 
