@@ -1,9 +1,5 @@
 # 🚤 Fishing Boat Safety System
 
-![Circuit Diagram](./Circuit%20Diagram/Circuit%20Diagram.png)
-
----
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform: Arduino](https://img.shields.io/badge/platform-arduino-blue.svg)](https://www.arduino.cc/)
 
@@ -74,6 +70,26 @@ The system is designed with a modular, layered architecture for reliability and 
                               +--------------------------+
 ```
 
+### 🧷 Component-to-Arduino Pin Mapping
+
+| Component                | Function                | Arduino Pin(s)         | Power Source         |
+|--------------------------|-------------------------|------------------------|----------------------|
+| MPU6050                  | Tilt sensor (I2C)       | A4 (SDA), A5 (SCL)     | 5V, GND              |
+| Neo-6M GPS Module        | GPS location (Serial)   | D4 (TX), D3 (RX)       | 5V, GND              |
+| SIM800L GSM Module       | SMS alerts (Serial)     | D10 (TX), D11 (RX)     | 3.7–4.2V (Buck Conv), GND |
+| 16x2 LCD with I2C        | Status display (I2C)    | A4 (SDA), A5 (SCL)     | 5V, GND              |
+| Buzzer                   | Audible alert           | D8                     | GND                  |
+| Push Button              | Manual trigger          | D7                     | GND                  |
+| Battery Voltage Divider  | Battery monitoring      | A0                     | -                    |
+| Arduino Uno              | Main controller         | -                      | 9V Battery           |
+
+- **Note:** SIM800L GSM requires a separate, stable 3.7–4.2V supply (use a buck converter from 9V battery).
+- All GNDs should be connected together for a common ground.
+
+### 📷 Circuit Diagram
+
+![Circuit Diagram](./Circuit%20Diagram/Circuit%20Diagram.png)
+
 **How it works:**
 - Sensors (MPU6050, GPS, Button, Battery Divider) feed data to the Arduino Uno.
 - Arduino processes sensor data, detects emergencies (tilt >30°, button press, low battery), and triggers alerts.
@@ -122,11 +138,6 @@ The system is designed with a modular, layered architecture for reliability and 
 - Trigger emergency via tilt or button.
 - Check SMS delivery to emergency contact.
 - Regularly inspect batteries and SIM balance.
-
----
-
-## 📷 Circuit Diagram
-See above or open `Circuit Diagram/Circuit Diagram.png` for detailed wiring.
 
 ---
 
