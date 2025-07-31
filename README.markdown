@@ -1,37 +1,49 @@
 # 🚤 Fishing Boat Safety System
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Platform: Arduino](https://img.shields.io/badge/platform-arduino-blue.svg)](https://www.arduino.cc/)
+<p align="center">
+  <img src="./Circuit%20Diagram/Circuit%20Diagram.png" alt="Circuit Diagram" width="500"/>
+</p>
 
-## Overview
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://www.arduino.cc/"><img src="https://img.shields.io/badge/platform-arduino-blue.svg" alt="Platform: Arduino"></a>
+</p>
+
+---
+
+> **Empowering safer journeys for fishermen with real-time tracking, accident detection, and instant emergency alerts.**
+
+---
+
+## 📑 Table of Contents
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [System Architecture & Data Flow](#system-architecture--data-flow)
+- [Component-to-Arduino Pin Mapping](#component-to-arduino-pin-mapping)
+- [Installation & Quick Start](#installation--quick-start)
+- [Wiring Instructions](#wiring-instructions)
+- [Usage](#usage)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+
+---
+
+## 📝 Overview
 
 The **Fishing Boat Safety System** is an open-source, Arduino-based solution designed to enhance the safety of fishermen at sea. It provides real-time location tracking, accident detection, and emergency alerts using a SIM800L GSM module, Neo-6M GPS, and MPU6050 accelerometer. The system monitors boat tilt, GPS coordinates, battery voltage, and manual triggers, displaying status on a 16x2 LCD and sounding a buzzer during emergencies. This project is cost-effective, easy to install, and ideal for coastal fishing communities.
 
 ---
 
-## 🚀 Key Features
-- Real-time GPS tracking (Neo-6M)
-- Accident detection (MPU6050, tilt >30°)
-- Emergency SMS alerts (SIM800L GSM)
-- Manual emergency trigger (push button)
-- Low battery monitoring and alerts
-- 16x2 LCD for system status and coordinates
-- Buzzer for audible emergency alerts
-- Robust error handling for all modules
+## ✨ Key Features
 
----
-
-## 🛠️ Hardware Components
-- **Arduino Uno** (controller)
-- **Neo-6M GPS Module** (location)
-- **SIM800L GSM Module** (SMS alerts)
-- **MPU6050 Accelerometer + Gyroscope** (tilt detection)
-- **16x2 LCD with I2C** (display)
-- **Buzzer** (audible alert)
-- **Push Button** (manual trigger)
-- **10kΩ Resistors (x2)** (voltage divider)
-- **Jumper Wires**
-- **Power Supply**: 9V batteries, buck converter
+- 🛰️ Real-time GPS tracking (Neo-6M)
+- ⚠️ Accident detection (MPU6050, tilt >30°)
+- 📲 Emergency SMS alerts (SIM800L GSM)
+- 🆘 Manual emergency trigger (push button)
+- 🔋 Low battery monitoring and alerts
+- 📟 16x2 LCD for system status and coordinates
+- 🔊 Buzzer for audible emergency alerts
+- 🛡️ Robust error handling for all modules
 
 ---
 
@@ -70,7 +82,9 @@ The system is designed with a modular, layered architecture for reliability and 
                               +--------------------------+
 ```
 
-### 🧷 Component-to-Arduino Pin Mapping
+---
+
+## 🗂️ Component-to-Arduino Pin Mapping
 
 | Component                | Function                | Arduino Pin(s)         | Power Source         |
 |--------------------------|-------------------------|------------------------|----------------------|
@@ -83,86 +97,81 @@ The system is designed with a modular, layered architecture for reliability and 
 | Battery Voltage Divider  | Battery monitoring      | A0                     | -                    |
 | Arduino Uno              | Main controller         | -                      | 9V Battery           |
 
-- **Note:** SIM800L GSM requires a separate, stable 3.7–4.2V supply (use a buck converter from 9V battery).
-- All GNDs should be connected together for a common ground.
-
-### 📷 Circuit Diagram
-
-![Circuit Diagram](./Circuit%20Diagram/Circuit%20Diagram.png)
-
-**How it works:**
-- Sensors (MPU6050, GPS, Button, Battery Divider) feed data to the Arduino Uno.
-- Arduino processes sensor data, detects emergencies (tilt >30°, button press, low battery), and triggers alerts.
-- Alerts are displayed on the LCD, sounded via the buzzer, and sent as SMS through the GSM module.
-- Emergency contacts receive real-time notifications for rapid response.
+> **Note:** SIM800L GSM requires a separate, stable 3.7–4.2V supply (use a buck converter from 9V battery). All GNDs should be connected together for a common ground.
 
 ---
 
-## ⚡ Installation and Setup
+## ⚡ Installation & Quick Start
 
-### Step 1: Gather Hardware
+### 1️⃣ Step 1: Gather Hardware
+- Collect all listed components.
+- Verify the SIM800L has an active 2G SIM card with sufficient balance.
+- Prepare a buck converter (e.g., adjustable step-down module) to convert 9V to 3.7–4.2V with at least 2A output.
 
-*   Collect all listed components.
-*   Verify the SIM800L has an active 2G SIM card with sufficient balance.
-*   Prepare a buck converter (e.g., adjustable step-down module) to convert 9V to 3.7–4.2V with at least 2A output.
+### 2️⃣ Step 2: Install Software
+1. Download and install the latest Arduino IDE from [arduino.cc](https://www.arduino.cc/en/software).
+2. Install required libraries via Sketch > Include Library > Manage Libraries:
+   - **LiquidCrystal_I2C** (Frank de Brabander)
+   - **TinyGPSPlus** (Mikal Hart)
+   - **MPU6050** (Electronic Cats or Adafruit)
+   - Confirm Wire.h and SoftwareSerial.h are built-in
+3. Verify installation by checking the library menu.
 
-### Step 2: Install Software
+---
 
-1.  Download and install the latest Arduino IDE from [arduino.cc](https://www.arduino.cc/en/software).
-2.  Install required libraries via Sketch > Include Library > Manage Libraries:
-    *   **LiquidCrystal_I2C** (Frank de Brabander).
-    *   **TinyGPSPlus** (Mikal Hart).
-    *   **MPU6050** (Electronic Cats or Adafruit).
-    *   Confirm Wire.h and SoftwareSerial.h are built-in.
-3.  Verify installation by checking the library menu.
-
-### Step 3: Wire the Components
+## 🪡 Wiring Instructions
 
 Connect components to Arduino Uno with exact pin-to-pin wiring:
 
-1.  **Power Supply**:
-    *   Connect a 9V battery to the Arduino Uno via the barrel jack or battery clip.
-    *   Connect a second 9V battery to the input of the buck converter.
-    *   Adjust the buck converter output to 3.7–4.2V (using a multimeter) and connect its positive output to the SIM800L VCC pin, negative to the SIM800L GND pin.
-2.  **Neo-6M GPS Module**:
-    *   **VCC** → Arduino 5V pin.
-    *   **GND** → Arduino GND pin.
-    *   **TX** → Arduino D4 pin.
-    *   **RX** → Arduino D3 pin.
-    *   Place near an open area for satellite reception.
-3.  **SIM800L GSM Module**:
-    *   **VCC** → Buck converter positive output (3.7–4.2V).
-    *   **GND** → Buck converter negative output (connected to Arduino GND pin).
-    *   **TX** → Arduino D10 pin.
-    *   **RX** → Arduino D11 pin.
-    *   Insert an active 2G SIM card and ensure the buck converter provides stable power.
-4.  **MPU6050 Sensor**:
-    *   **VCC** → Arduino 5V pin.
-    *   **GND** → Arduino GND pin.
-    *   **SCL** → Arduino A5 pin.
-    *   **SDA** → Arduino A4 pin.
-5.  **16x2 LCD with I2C Module**:
-    *   **VCC** → Arduino 5V pin.
-    *   **GND** → Arduino GND pin.
-    *   **SCL** → Arduino A5 pin.
-    *   **SDA** → Arduino A4 pin.
-6.  **Buzzer**:
-    *   **Positive** → Arduino D8 pin.
-    *   **Negative** → Arduino GND pin.
-7.  **Push Button**:
-    *   **Leg 1** → Arduino D7 pin.
-    *   **Leg 2** → Arduino GND pin (uses internal pull-up resistor).
-8.  **Battery Voltage Divider**:
-    *   **Resistor 1 (10kΩ)**: Connect one end to the 9V battery positive, other end to a junction.
-    *   **Resistor 2 (10kΩ)**: Connect one end to the junction, other end to the 9V battery negative.
-    *   **Junction** → Arduino A0 pin.
-    *   **9V Battery Negative** → Arduino GND pin.
+### 🔌 Power Supply
+- Connect a 9V battery to the Arduino Uno via the barrel jack or battery clip.
+- Connect a second 9V battery to the input of the buck converter.
+- Adjust the buck converter output to 3.7–4.2V (using a multimeter) and connect its positive output to the SIM800L VCC pin, negative to the SIM800L GND pin.
 
-#### Wiring Tips
+### 🛰️ Neo-6M GPS Module
+- **VCC** → Arduino 5V pin
+- **GND** → Arduino GND pin
+- **TX** → Arduino D4 pin
+- **RX** → Arduino D3 pin
+- Place near an open area for satellite reception.
 
-*   Use color-coded wires (red: 5V, black: GND, blue: signals).
-*   Ensure the buck converter is adjusted to 3.7–4.2V with a multimeter before connecting to the SIM800L.
-*   Double-check all connections to avoid shorts.
+### 📲 SIM800L GSM Module
+- **VCC** → Buck converter positive output (3.7–4.2V)
+- **GND** → Buck converter negative output (connected to Arduino GND pin)
+- **TX** → Arduino D10 pin
+- **RX** → Arduino D11 pin
+- Insert an active 2G SIM card and ensure the buck converter provides stable power.
+
+### 🧭 MPU6050 Sensor
+- **VCC** → Arduino 5V pin
+- **GND** → Arduino GND pin
+- **SCL** → Arduino A5 pin
+- **SDA** → Arduino A4 pin
+
+### 📟 16x2 LCD with I2C Module
+- **VCC** → Arduino 5V pin
+- **GND** → Arduino GND pin
+- **SCL** → Arduino A5 pin
+- **SDA** → Arduino A4 pin
+
+### 🔊 Buzzer
+- **Positive** → Arduino D8 pin
+- **Negative** → Arduino GND pin
+
+### 🆘 Push Button
+- **Leg 1** → Arduino D7 pin
+- **Leg 2** → Arduino GND pin (uses internal pull-up resistor)
+
+### 🔋 Battery Voltage Divider
+- **Resistor 1 (10kΩ)**: Connect one end to the 9V battery positive, other end to a junction.
+- **Resistor 2 (10kΩ)**: Connect one end to the junction, other end to the 9V battery negative.
+- **Junction** → Arduino A0 pin
+- **9V Battery Negative** → Arduino GND pin
+
+#### 💡 Wiring Tips
+- Use color-coded wires (red: 5V, black: GND, blue: signals).
+- Ensure the buck converter is adjusted to 3.7–4.2V with a multimeter before connecting to the SIM800L.
+- Double-check all connections to avoid shorts.
 
 ---
 
