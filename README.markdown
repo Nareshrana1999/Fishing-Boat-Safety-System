@@ -1,10 +1,6 @@
 # 🚤 Fishing Boat Safety System
 
 <p align="center">
-  <img src="./Circuit%20Diagram/Circuit%20Diagram.png" alt="Circuit Diagram" width="500"/>
-</p>
-
-<p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <a href="https://www.arduino.cc/"><img src="https://img.shields.io/badge/platform-arduino-blue.svg" alt="Platform: Arduino"></a>
 </p>
@@ -12,19 +8,6 @@
 ---
 
 > **Empowering safer journeys for fishermen with real-time tracking, accident detection, and instant emergency alerts.**
-
----
-
-## 📑 Table of Contents
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [System Architecture & Data Flow](#system-architecture--data-flow)
-- [Component-to-Arduino Pin Mapping](#component-to-arduino-pin-mapping)
-- [Installation & Quick Start](#installation--quick-start)
-- [Wiring Instructions](#wiring-instructions)
-- [Usage](#usage)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ---
 
@@ -81,6 +64,10 @@ The system is designed with a modular, layered architecture for reliability and 
                               | Emergency Contact/Rescue |
                               +--------------------------+
 ```
+
+<p align="center">
+  <img src="./Circuit%20Diagram/Circuit%20Diagram.png" alt="Circuit Diagram" width="500"/>
+</p>
 
 ---
 
