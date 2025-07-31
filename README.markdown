@@ -1,10 +1,5 @@
 # 🚤 Fishing Boat Safety System
 
-<p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-  <a href="https://www.arduino.cc/"><img src="https://img.shields.io/badge/platform-arduino-blue.svg" alt="Platform: Arduino"></a>
-</p>
-
 ## 📝 Overview
 
 The **Fishing Boat Safety System** is an open-source, Arduino-based solution designed to enhance the safety of fishermen at sea. It provides real-time location tracking, accident detection, and emergency alerts using a SIM800L GSM module, Neo-6M GPS, and MPU6050 accelerometer. The system monitors boat tilt, GPS coordinates, battery voltage, and manual triggers, displaying status on a 16x2 LCD and sounding a buzzer during emergencies. This project is cost-effective, easy to install, and ideal for coastal fishing communities.
@@ -60,7 +55,7 @@ The system is designed with a modular, layered architecture for reliability and 
 ```
 
 <p align="center">
-  <img src="./Circuit%20Diagram/Circuit%20Diagram.png" alt="Circuit Diagram" width="500"/>
+  <img src="./Circuit%20Diagram/Circuit%20Diagram.png" alt="Circuit Diagram" width="900"/>
 </p>
 
 ---
@@ -166,7 +161,16 @@ Connect components to Arduino Uno with exact pin-to-pin wiring:
 ---
 
 ## 📜 License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+<div align="center">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License" style="vertical-align:middle; margin-right:10px;"/>
+</div>
+
+<p align="center" style="font-size:1.1em;">
+  <strong>This project is licensed under the <a href="LICENSE">MIT License</a>.</strong><br>
+  You are free to use, modify, and distribute this software with proper attribution.<br>
+  See the <a href="LICENSE">LICENSE</a> file for full details.
+</p>
 
 ---
 
